@@ -72,23 +72,28 @@ if(isset($_POST['feedback']))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
 </head>
 <body>
-<h2 class="header">Market Shop Related Services</h2>
+<h1 class="header">Market Shop Related Services</h1>
 <div class="container">
-        <h2>Feedback Portal</h2>
-        <h4>Give you feedback for the following Shops</h4>
+        <h2 class="subheading">Feedback Portal</h2>
+        <br>
+       
+        <div class="main">
+        <div class="table">
+        <h3>Give you feedback for the following Shops</h3>
+        <br>
        <?php 
         $query="select * from Shop";
         $result=mysqli_query($db,$query);
 
         echo "
-        <table border=\"5\" cellpadding=\"5\"  bordercolor=\"#808080\" bgcolor=\"#C0C0C0\">
+        <table>
          <tr>
-         <td>Shop ID</td> 
-        <td>Shop Name</td> 
-        <td>Area</td> 
+         <th>Shop ID</td> 
+        <th>Shop Name</td> 
+        <th>Area</td> 
         </tr>"; 
 
         while($user=mysqli_fetch_assoc($result))
@@ -101,41 +106,45 @@ if(isset($_POST['feedback']))
         }
         echo "</table>";
         ?>
+        </div>
+        <div class="formclass">
         <form class="form-div" action="feedback.php" method="post">
         <br>
         <h4>Enter your details</h4>
         <div class="form-group">
-            Roll Number <input type="text" name="RollNo"  placeholder="Enter your Roll Number" required><br>
+            <label for="RollNo">Roll Number</label> <input type="text" name="RollNo" id="RollNo" placeholder="Enter your Roll Number" required><br>
         </div>
         <div class="form-group">
-            Password <input type="text" name="passwd" placeholder="Enter your Password" required><br>
+            <label for="passwd">Password</label> <input type="text" id="passwd" name="passwd" placeholder="Enter your Password" required><br>
         </div>
         <h4>Give your feedback for one of the above Shops</h4>
         <div class="form-group">
-            Shop ID <input type="text" name="Shop_ID" placeholder="Enter valid Shop ID" required><br>
+            <label for="Shop_ID">Shop ID</label> <input type="text" id="Shop_ID" name="Shop_ID" placeholder="Enter valid Shop ID" required><br>
         </div>
         <div class="form-group">
-            Product/Service Quality <input type="number" name="Quality" min="1" max="10" placeholder="Rating" required><br>
+            <label for="Quality">Product/Service Quality</label> <input type="number" id="Quality" name="Quality" min="1" max="10" placeholder="Rating" required>
         </div >
         <div class="form-group">
-          Shopkeeper Behaviour <input type="number" name="Behaviour" min="1" max="10" placeholder="Rating" required><br>
+          <label for="Behaviour">Shopkeeper Behaviour</label><input type="number" id="Behaviour"  name="Behaviour" min="1" max="10" placeholder="Rating" required>
         </div>
         <div class="form-group">
-         Value for Money<input type="number" name="Value" min="1" max="10" placeholder="Rating"  required><br>
+         <label for="Value">Value for Money</label><input type="number" id="Value" name="Value" min="1" max="10" placeholder="Rating"  required>
         </div>
         <div class="form-group">
-        Product/Service Variety <input type="number" min="1" max="10" placeholder="Rating" name="Variety"required><br>
+        <label for="Variety">Product/Service Variety</label><input type="number" min="1" max="10" placeholder="Rating" id="Variety" name="Variety"required>
         </div>
         <div class="form-group">
-        Additional Comments/Suggestions <input type="text" name="Comments"><br>
+        <label  for="Comments">Additional Comments/Suggestions</label><textarea id="Comments" name="Comments"></textarea>
         </div>
         <br>
 
         <button type="submit" name="feedback">Submit</button>
         </form> 
+        </div>
+        </div>
         <br>
 
-        <div><a href="home.php">Go to Home Page</a></div>  
+        <div><a class="home" href="home.php">Go to Home Page</a></div>  
     </div>
     
 </body>

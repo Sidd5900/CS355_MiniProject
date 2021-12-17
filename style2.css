@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#paydiv,
+#licensediv,
+#billdiv,
+#chargesdiv,
+#gatepassdiv,
+#summarydiv {
+  display: none;
+}
+
+.header {
+  width: 100%;
+  background-color: rgb(40, 1, 63);
+  color: rgb(243, 242, 242);
+  text-align: center;
+  padding: 5px;
+}
+
+.container {
+  margin: 5px;
+  padding: 5px;
+}
+
+.row {
+  display: flex;
+}
+.l1,
+.l2,
+.l3 {
+  flex: 33.33%;
+  margin: 10px 100px;
+}
+
+a {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  border: 4px solid black;
+  background-color: lightskyblue;
+  color: black;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.form-div {
+  width: 80%;
+  justify-content: center;
+  padding: 0;
+}
+.form-group {
+  margin: 5px;
+  padding: 4px;
+}
+
+input {
+  margin: auto;
+}
+
+table {
+  display: inline-block;
+  margin: auto;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+th,
+td {
+  border: 2px solid black;
+  padding: 5px;
+}
+
+th {
+  background-color: lightblue;
+}
+
+.main {
+  display: flex;
+  /*flex-wrap: wrap;*/
+  justify-content: center;
+  align-items: center;
+}
+.table,
+.formclass {
+  flex: 50%;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 30px;
+}
+.subheading {
+  border: 2px solid black;
+  background-color: lightgreen;
+  margin: 10px;
+}
+h2,
+h3,
+h4 {
+  margin: 10px;
+}
+form {
+  background-color: lightgray;
+  margin: auto;
+}
+.form-group {
+  text-align: left;
+}
+a.home,
+a.logout,
+a.addpay {
+  display: block;
+  max-width: 250px;
+  margin: auto;
+  margin-top: 10px;
+}
+a:hover {
+  background-color: blue;
+}
+label,
+input {
+  display: inline-block;
+  width: 200px;
+  margin: 7px;
+}
+textarea {
+  height: 50px;
+  width: 200px;
+}
+
+.gatepass,
+.license,
+.charges {
+  padding: 10px;
+  border: 2px solid black;
+  width: 35%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.loginform {
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+button {
+  background-color: orange;
+  padding: 5px;
+  font-weight: bold;
+}
+
+button[type="submit"] {
+  margin: 5px;
+  padding: 5px;
+}
+
+button:hover {
+  background-color: orangered;
+}
+
+.addbill,
+.payelectricity,
+.payrent {
+  width: 50%;
+  margin: auto;
+  padding: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+  .row,
+  .main {
+    flex-direction: column;
+  }
+  label,
+  input,
+  textarea {
+    display: block;
+    margin: auto;
+  }
+}

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+$message="";
 //User not logged in
 if(!isset($_SESSION['Shopkeeper_ID']))
 {
@@ -11,7 +11,7 @@ if(!isset($_SESSION['Shopkeeper_ID']))
 //if login is successfull
 if(isset($_SESSION['success']))
 {
-    echo $_SESSION['success'];
+    $message= $_SESSION['success'];
     unset($_SESSION['success']);
 }
 
@@ -31,20 +31,21 @@ if(!$db)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopkeeperWelcome</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
 </head>
 <body>
-<h2 class="header">Market Shop Related Services</h2>
+<h1 class="header">Market Shop Related Services</h1>
+<?php echo $message;?>
     <div class="container">
         <?php if(isset($_SESSION['Shopkeeper_ID'])): ?>
-        <h3>Welcome <?php echo $_SESSION['Shopkeeper_ID'];?></h3>
+        <h3 class="subheading">Welcome <?php echo $_SESSION['Shopkeeper_ID'];?></h3>
         <br>
         <?php 
         $Shopkeeper_ID=$_SESSION['Shopkeeper_ID'];
 
 
         //Gatepass Validity
-
+        echo "<div class=\"gatepass\">";
         echo "<h4>Gatepass Validity</h4><br>";
         
         $query="select * from shopkeeper natural join gatepass where Shopkeeper_ID='$Shopkeeper_ID'";
@@ -65,10 +66,11 @@ if(!$db)
         echo "<div style=\"color:red;\">Your Gatepass Validity has expired</div>" . "<br>";
         else if($user['ValidTill']<$nextmonth)
         echo "<div style=\"color:red;\">Your Gatepass Validity will expire within 30 days</div>" . "<br>";
-
+        echo "</div>";
         //Shop License Details
-
-        echo "<br><h4>Shop License Details</h4><br>";
+        
+        echo "<div class=\"license\">";
+        echo "<h4>Shop License Details</h4><br>";
         $query="select * from license where Shopkeeper_ID='$Shopkeeper_ID'";
         $result=mysqli_query($db,$query);
         $user=mysqli_fetch_assoc($result);
@@ -81,20 +83,21 @@ if(!$db)
         $curdate=date("Y-m-d");
         if($user['LicenseTill']<$curdate)
         echo "Your Shop License has expired" . "<br>";
-
+        echo "</div>";
 
         //View Bill Details
+        echo "<div class=\"bill\">";
         echo "<br><h4>Bill Details</h4><br>";
         $query="select * from BillDetails natural join License where Shopkeeper_ID='$Shopkeeper_ID'";
         $result=mysqli_query($db,$query);
 
         echo "
-        <table border=\"5\" cellpadding=\"5\"  bordercolor=\"#808080\" bgcolor=\"#C0C0C0\">
+        <table >
          <tr>
-         <td>Bill ID</td> 
-        <td>Bill Date</td> 
-        <td>Shop Rent</td> 
-        <td>Electricity Bill</td> 
+         <th>Bill ID</th> 
+        <th>Bill Date</th> 
+        <th>Shop Rent</th> 
+        <th>Electricity Bill</th> 
         </tr>"; 
 
         while($user=mysqli_fetch_assoc($result))
@@ -107,20 +110,20 @@ if(!$db)
             echo "<tr>"; 
         }
         echo "</table>";
-
+        echo "</div>";
         //Pay Details
-
+        echo "<div class=\"pay\">";
         echo "<br><h4>Previous Payment Details</h4><br>";
         $query="select * from PayDetails natural join License where Shopkeeper_ID='$Shopkeeper_ID'";
         $result=mysqli_query($db,$query);
 
         echo "
-        <table border=\"5\" cellpadding=\"5\"  bordercolor=\"#808080\" bgcolor=\"#C0C0C0\">
+        <table>
          <tr>
-         <td>Reference ID</td> 
-        <td>Category</td> 
-        <td>Payment Date</td> 
-        <td>Amount Paid</td> 
+         <th>Reference ID</th> 
+        <th>Category</th> 
+        <th>Payment Date</th> 
+        <th>Amount Paid</th> 
         </tr>"; 
 
         while($user=mysqli_fetch_assoc($result))
@@ -133,10 +136,11 @@ if(!$db)
             echo "<tr>"; 
         }
         echo "</table>";
-
+        echo "</div>";
+        echo "<div class=\"charges\">";
         //Pending Charges Details
 
-        echo "<br><h4>Pending Charges</h4><br>";
+        echo "<h4>Pending Charges</h4><br>";
         $query="select * from PendingCharges natural join license where Shopkeeper_ID='$Shopkeeper_ID'";
         $result=mysqli_query($db,$query);
         $user=mysqli_fetch_assoc($result);
@@ -148,7 +152,8 @@ if(!$db)
             echo "Shop Rent Due" . $user['ShopRentDue'] . "<br>";
         }
         ?>
-        <a href="logout.php">Logout</a>
+        </div>
+        <a class="logout" href="logout.php">Logout</a>
         <?php endif ?>
        
     </div>

@@ -94,13 +94,13 @@ if(isset($_POST['PayShopRent']))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
 </head>
 <body>
-<h2 class="header">Market Shop Related Services</h2><br>   
+<h1 class="header">Market Shop Related Services</h1><br>   
 <div class="container">
-<h4>Add New Bill</h4> 
-    <form action="bill.php" method="post">
+<h4 class="subheading" style="width:50%;margin:auto;">Add New Bill</h4> 
+    <form class="addbill" action="bill.php" method="post">
         <div>
         <label for="Bill_ID">Bill_ID</label>
         <input type="text" id="Bill_ID" name="Bill_ID" required><br>
@@ -128,44 +128,44 @@ if(isset($_POST['PayShopRent']))
         </form> 
         <br> 
 
-<h4>Pay Electricity Bill</h4> 
-    <form action="bill.php" method="post">
+<h4 class="subheading" style="width:50%;margin:auto;">Pay Electricity Bill</h4> 
+    <form class="payelectricity" action="bill.php" method="post">
         <div>
-            Reference ID <input type="text" name="Reference_ID" required><br>
+            <label for="">Reference ID </label><input class="inp" type="text" name="Reference_ID" required><br>
         </div>
         <div>
-            Shop_ID <input type="text" name="Shop_ID" required><br>
+            <label for="">Shop_ID</label> <input class="inp" type="text" name="Shop_ID" required><br>
         </div>
         <div>
-        Pay Date <input type="date" name="PayDate" required><br>
+        <label for="">Pay Date</label> <input class="inp" type="date" name="PayDate" required><br>
         </div>
         <div>
-        Amount Paid <input type="number" min="0" name="PayAmount" required><br>
+       <label for=""> Amount Paid</label> <input class="inp" type="number" min="0" name="PayAmount" required><br>
         </div>
         <br> 
         <button type="submit" name="PayElectricityBill">Submit</button><br> 
         </form>  
         <br> 
-<h4>Pay Shop Rent</h4>       
-        <form action="bill.php" method="post">
+<h4 class="subheading" style="width:50%;margin:auto;">Pay Shop Rent</h4>       
+        <form class="payrent" action="bill.php" method="post">
         <div>
-            Reference ID <input type="text" name="Reference_ID" required><br>
+            <label for="">Reference ID </label><input class="inp" type="text" name="Reference_ID" required><br>
         </div>
         <div>
-            Shop_ID <input type="text" name="Shop_ID" required><br>
+            <label for="">Shop_ID</label> <input class="inp" type="text" name="Shop_ID" required><br>
         </div>
         <div>
-        Pay Date <input type="date" name="PayDate" required><br>
+        <label for="">Pay Date</label> <input class="inp" type="date" name="PayDate" required><br>
         </div>
         <div>
-        Amount Paid <input type="number" min="0" name="PayAmount" required><br>
+       <label for=""> Amount Paid </label><input class="inp" type="number" min="0" name="PayAmount" required><br>
         </div>
         <br> 
         <button type="submit" name="PayShopRent">Submit</button>
         </form>   
         <br> 
-        <a href="SupervisorWelcome.php">Return to the Main Page</a><br>
-        <a href="logout.php">Logout</a>
+        <a class="home" href="SupervisorWelcome.php">Return to the Main Page</a><br>
+        <a class="logout" href="logout.php">Logout</a>
        
     
 </div>        
